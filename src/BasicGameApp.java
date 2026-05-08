@@ -199,18 +199,10 @@ public class BasicGameApp implements Runnable, KeyListener {
             // stand
             System.out.println("You Chose Stand");
 
-            if (dealer.getHandValue() < 17) {
+            while (dealer.getHandValue() < 17 || dealer.getHandValue() < user.getHandValue()) {
                 dealer.hit(dealCard());
             }
-            if (dealer.getHandValue() < 17) {
-                dealer.hit(dealCard());
-            }
-            if (dealer.getHandValue() < 17) {
-                dealer.hit(dealCard());
-            }
-            if (dealer.getHandValue() < 17) {
-                dealer.hit(dealCard());
-            }
+
             System.out.println("Dealer Hand:");
             dealer.printInfo();
             System.out.println("Dealer Total:" + dealer.getHandValue());
