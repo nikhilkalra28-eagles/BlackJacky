@@ -129,9 +129,9 @@ public class BasicGameApp implements Runnable, KeyListener {
             g.drawString("Push", 250, 180); // Push
         }
 
-        g.setColor(Color.black);
+        g.setColor(Color.red);
         g.setFont(new Font("Times New Roman", Font.BOLD, 100));
-        g.drawString(dealer.hand[0].name, 407, 290);
+        g.drawString(dealer.hand[0].name, 407, 285);
         g.drawString(user.hand[0].name, 200, 600);
         g.drawString(user.hand[1].name, 420, 600);
 
