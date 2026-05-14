@@ -132,13 +132,13 @@ public class BasicGameApp implements Runnable, KeyListener {
         g.setColor(Color.black);
         g.setFont(new Font("Times New Roman", Font.BOLD, 100));
         g.drawString(dealer.hand[0].name, 407, 290);
-        g.drawString(user.hand[0].name, 220, 600);
+        g.drawString(user.hand[0].name, 200, 600);
         g.drawString(user.hand[1].name, 420, 600);
 
         g.setFont(new Font("Times New Roman", Font.BOLD, 20));
         g.drawString(dealer.hand[0].suit, 407, 310);
         g.drawString(user.hand[0].suit, 210, 620);
-        g.drawString(user.hand[1].suit, 400, 620);
+        g.drawString(user.hand[1].suit, 395, 620);
 
 
         g.setColor(Color.WHITE);
