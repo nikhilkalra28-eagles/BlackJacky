@@ -14,6 +14,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
 
     //Variable Definition Section
+    Image background;
     //You can set their initial values too
     // Like Mario mario = new Mario(); //
     public Card[] deck;
@@ -29,11 +30,14 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         //variable and objects
         //create (construct) the objects needed for the game
-        deck = getShuffledDeck(); // gives us a fresh, shuffled deck to start the game.
+        deck = getShuffledDeck();// gives us a fresh, shuffled deck to start the game.
+        background = Toolkit.getDefaultToolkit().getImage("blackjackyy.jpg");
 
         user = new Player(dealCard(),dealCard());
         System.out.println("Player Hand:");
         user.printInfo();
+
+        System.out.println("Your total:" +   user.getHandValue());
         System.out.println("-----");
 
         dealer =  new Player(dealCard(),dealCard());
@@ -94,6 +98,47 @@ public class BasicGameApp implements Runnable, KeyListener {
     private void render() {
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
+
+        g.setColor(Color.white);
+        g.drawRect(200, 500, 90, 120);
+        g.fillRect(200,500,90,120);
+
+        g.setColor(Color.white);
+        g.drawRect(400,500,90,120);
+        g.fillRect(400,500,90,120);
+
+        g.setColor(Color.white);
+        g.drawRect(400,200,90,120);
+        g.fillRect(400,200,90,120);
+
+        if (dealer.getHandValue() > 21) {
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 175)); // Font
+            g.drawString("You win", 200, 180); // You win
+        }
+
+        if (user.getHandValue() > 21){
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 175)); // Font
+            g.drawString("You Lose", 250, 180); // You lose
+        }
+        if (user.getHandValue() == dealer.getHandValue() && dealer.getHandValue() > 17){
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Times New Roman", Font.BOLD, 175)); // Font
+            g.drawString("Push", 250, 180); // Push
+        }
+
+        g.setColor(Color.black);
+        g.setFont(new Font("Times New Roman", Font.BOLD, 100));
+        g.drawString(dealer.hand[0].name, 407, 290);
+        g.drawString(user.hand[0].name, 220, 600);
+        g.drawString(user.hand[1].name, 420, 600);
+
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Times New Roman", Font.BOLD, 50));
+        g.drawString("You:", 90, 500);
+        g.drawString("Dealer:", 100, 250);
 
         //draw the images
         // Signature: drawImage(Image img, int x, int y, int width, int height, ImageObserver observer)

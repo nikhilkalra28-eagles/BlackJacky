@@ -16,7 +16,7 @@ public class Player {
         handSize++;
 
         printInfo();
-        System.out.print("------");
+        System.out.println("------");
 
 
     }
