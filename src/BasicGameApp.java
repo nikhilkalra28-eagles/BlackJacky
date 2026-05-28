@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.util.ArrayList;
+
 //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 public class BasicGameApp implements Runnable, KeyListener {
 
@@ -18,9 +20,11 @@ public class BasicGameApp implements Runnable, KeyListener {
     //You can set their initial values too
     // Like Mario mario = new Mario(); //
     public Card[] deck;
-    public Player user;
-    public Player dealer;
+    private Player user;
+    private Player dealer;
     public int indexOfDeck = 0;
+    ;
+
 
 
 
@@ -42,7 +46,7 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         dealer =  new Player(dealCard(),dealCard());
         System.out.println("Dealer Hand:");
-        dealer.hand[0].printInfo();
+        dealer.getHand().get(0).printInfo();
         System.out.println("----");
 
 
@@ -131,14 +135,14 @@ public class BasicGameApp implements Runnable, KeyListener {
 
         g.setColor(Color.red);
         g.setFont(new Font("Times New Roman", Font.BOLD, 100));
-        g.drawString(dealer.hand[0].name, 407, 285);
-        g.drawString(user.hand[0].name, 200, 600);
-        g.drawString(user.hand[1].name, 420, 600);
+        g.drawString(dealer.getHand().get(0).getName(), 407, 285);
+        g.drawString(user.getHand().get(0).getName(), 200, 600);
+        g.drawString(user.getHand().get(1).getName(), 420, 600);
 
         g.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        g.drawString(dealer.hand[0].suit, 407, 310);
-        g.drawString(user.hand[0].suit, 210, 620);
-        g.drawString(user.hand[1].suit, 395, 620);
+        g.drawString(dealer.getHand().get(0).getSuit(), 407, 310);
+        g.drawString(user.getHand().get(0).getSuit(), 210, 620);
+        g.drawString(user.getHand().get(1).getSuit(), 395, 620);
 
 
         g.setColor(Color.WHITE);

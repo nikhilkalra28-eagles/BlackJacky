@@ -1,24 +1,29 @@
+import java.util.ArrayList;
+
 public class Player {
-    int numberOfCards;
-    Card[] hand;
-    int handSize = 0;
+    private int numberOfCards;
+    private ArrayList<Card> hand;
+    private int handSize = 0;
 
 // add player hit
     public Player (Card card1, Card card2){
-        hand = new Card[11];
-        hand[0] = card1;
-        hand[1] = card2;
+
+        hand = new ArrayList<>();
+        hand.add(card1);
+        hand.add(card2);
         handSize = 2;
     }
 
     public void hit(Card newCard){
-        hand[handSize] = newCard;
+        hand.add(newCard);
         handSize++;
 
         printInfo();
         System.out.println("------");
+    }
 
-
+    public ArrayList<Card> getHand(){
+        return hand;
     }
 
     public void stand (){
@@ -27,14 +32,14 @@ public class Player {
 
     public void printInfo (){
         for(int i = 0; i < handSize; i++){
-            hand[i].printInfo();
+            hand.get(i).printInfo(); // hand.get(i)
         }
     }
 
     public int getHandValue() {
         int sum = 0;
         for (int i = 0; i < handSize; i++) {
-            sum = sum + hand[i].value;
+            sum = sum + hand.get(i).getValue();
         }
         return sum;
     }
